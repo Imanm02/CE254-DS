@@ -8,9 +8,10 @@ This repository contains solutions to the practical assignments for the CE181: D
 ## Table of Contents
 
 - [Overview](#overview)
-- [Practical Assignments](#practical-assignments)
-- [Theoretical Assignments](#theoritical-assignments)
+- [Assignments](#assignments)
+- [Challenge](#challenge)
 - [Exams](#exams)
+- [Quizzes](#quizzes)
 - [Notes](#notes)
 - [Source](#source)
 
