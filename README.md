@@ -15,17 +15,17 @@ This repository contains solutions to the practical assignments for the CE181: D
 - [Notes](#notes)
 - [Source](#source)
 
-## Practical Assignments
+## Assignments
 
-In the "Practical Assignments" folder, you will find the solutions to practical assignments given during the course.
-
-## Theoretical Assignments
-
-In the "Theoretical Assignments" folder, you will find the solutions to theoretical assignments given during the course.
+In the "Assignments" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
 
 ## Exams
 
-In the "Exams" folder, you will find the solutions to the midterm and final of the course in different semesters.
+In the "Exams" folder, you will find the solutions to the midterm and final of the course.
+
+## Quizzes
+
+In the "Quizzes" folder, you will find the solutions to 2 quizzes given during the course.
 
 ## Notes
 
