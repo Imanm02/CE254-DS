@@ -1,91 +1,64 @@
-#include<bits/stdc++.h>
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-const long long mostExample = 3e5 + 5;
-const long long mostTough = 1e9 + 7;
-const long long mostHard = (long long) 1<<31;
+const long long MAX_NODES = 3e5 + 5;
+const long long MOD = 1e9 + 7;
+const long long BASE = (long long)1 << 31;
 
-long long input1;
-long long input2;
-long long father[mostExample];
-long long hold[mostExample];
-long long fatherOfNode[mostExample];
-long long temp1;
+long long numNodes, numQueries;
+long long parentNodes[MAX_NODES], xorValue[MAX_NODES], parentNode[MAX_NODES];
+long long queryCounter;
 
-long long point;
+vector<long long> results;
 
-vector <long long> output;
-
-long long parent(long long temp) {
-    if(father[temp] < 0) {
-            return temp;
+long long findParent(long long node) {
+    if (parentNodes[node] < 0) {
+        return node;
     }
-    if(father[temp] >= 0) {
-            return parent(father[temp]);
-    }
-
-}
-long long XOR(long long temp) {
-    if(father[temp] < 0) {
-            return fatherOfNode[temp];
-    }
-    long long out = fatherOfNode[temp] ^ XOR(father[temp]);
-    return out;
+    return findParent(parentNodes[node]);
 }
 
-void join(long long int1, long long int2, long long int3) {
-    long long V = int1, U = int2;
-    int1 = parent(int1), int2 = parent(int2);
-    if(int1 == int2) {
-        long long temp1 = XOR(V) ^ int3, temp2 = XOR(U);
-        if(temp1 != temp2) {
-            point = 1;
-        }
-        if(temp1 == temp2) {
-            point = 0;
-        }
+long long computeXOR(long long node) {
+    if (parentNodes[node] < 0) {
+        return parentNode[node];
+    }
+    return parentNode[node] ^ computeXOR(parentNodes[node]);
+}
+
+void unionSets(long long node1, long long node2, long long value) {
+    node1 = findParent(node1);
+    node2 = findParent(node2);
+
+    if (node1 == node2) {
+        long long xor1 = computeXOR(node1) ^ value;
+        long long xor2 = computeXOR(node2);
+        queryCounter = (xor1 != xor2) ? 1 : 0;
         return;
     }
-    temp1--;
-    if(father[int1] > father[int2]){
-            swap(int1, int2);
+
+    if (parentNodes[node1] > parentNodes[node2]) {
+        swap(node1, node2);
     }
-    long long int4 = XOR(V);
-    long long int5 = XOR(U);
-    fatherOfNode[int2] = int4 ^ int5 ^ int3;
-    father[int1] = father[int1] + father[int2];
-    father[int2] = int1;
+
+    long long xor1 = computeXOR(node1);
+    long long xor2 = computeXOR(node2);
+    parentNode[node2] = xor1 ^ xor2 ^ value;
+    parentNodes[node1] += parentNodes[node2];
+    parentNodes[node2] = node1;
 }
 
-int32_t main() {
+int main() {
     ios::sync_with_stdio(false);
-    hold[0] = 1;
-    cin >> input1;
-    cin >> input2;
-    hold[1] = 1 % mostTough * mostHard % mostTough;
-    for(long long i = 2; i < mostExample; i++) {
-        hold[i] = hold[i - 1] % mostTough * mostHard % mostTough;
+    cin >> numNodes >> numQueries;
+    memset(parentNodes, -1, sizeof(parentNodes));
+    for (long long i = 0; i < numQueries; i++) {
+        long long node1, node2, value;
+        cin >> node1 >> node2 >> value;
+        unionSets(node1, node2, value);
+        results.push_back(queryCounter ? 0 : BASE);
     }
-    temp1 = input1;
-    memset(father, -1, sizeof(father));
-    for(long long i = 1; i <= input2; i++) {
-        long long temporory1, temporory2, temporory3;
-        cin >> temporory1;
-        cin >> temporory2;
-        cin >> temporory3;
-        join(temporory1, temporory2, temporory3);
-        if(point == 1) {
-            output.push_back(0);
-        }
-        else {
-            output.push_back(hold[temp1]);
-        }
+    for (auto result : results) {
+        cout << result << '\n';
     }
-    for(long long i = 0; i < input2; i++){
-        cout<<output[i]<<'\n';
-    }
-
     return 0;
 }
