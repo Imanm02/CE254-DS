@@ -20,9 +20,9 @@ This repository contains solutions to the practical assignments for the CE181: D
 
 In the "Assignments" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
 
-## Assignments
+## Challenge
 
-In the "Assignments" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
+In the "Challenge" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
 
 ## Exams
 
