@@ -22,7 +22,7 @@ In the "Assignments" folder, you will find the docs of 15 theoretical assignment
 
 ## Challenge
 
-In the "Challenge" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
+In the "Challenge" folder, you will find the doc of the challenge given during the course.
 
 ## Exams
 
