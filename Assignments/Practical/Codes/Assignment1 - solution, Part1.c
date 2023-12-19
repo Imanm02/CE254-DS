@@ -1,35 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-    long long int n;
-    long long int max;
-    long long int m = 0;
-    long long int Shomarandeh = 0;
-    scanf("%lld %lld", &n, &max);
-    long long int numbers[n];
-    for (long long int i = 0; i < n; i++)
-    {
-        scanf("%lld ", &m);
-        numbers[i] = m;
+int main() {
+    long long n, maxSum, currentNumber, subarrayCount = 0;
+    scanf("%lld %lld", &n, &maxSum);
+    long long numbers[n];
+
+    // خواندن اعداد
+    for (long long i = 0; i < n; i++) {
+        scanf("%lld ", &currentNumber);
+        numbers[i] = currentNumber;
     }
-    long long int i = 0;
-    long long int j = 0;
-    long long int sum;
-    long long int g = 0;
-    sum += numbers[i];
-    for (i = 0; i < n; i++){
-        for (j = i + 1; j <= n; j++){
-                sum = 0;
-                for (int k = i; k < j; k++) {
-                    sum = sum + numbers[k];
-                }
-                if (sum <= max) {
-                g++;
+
+    // محاسبه تعداد زیرآرایه‌ها
+    for (long long i = 0; i < n; i++) {
+        long long sum = 0;
+        for (long long j = i; j < n; j++) {
+            sum += numbers[j];
+            if (sum <= maxSum) {
+                subarrayCount++;
             }
         }
     }
 
-    printf("%lld ", g);
+    printf("%lld ", subarrayCount);
+    return 0;
 }
