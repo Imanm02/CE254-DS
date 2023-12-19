@@ -1,54 +1,50 @@
 #include <iostream>
-#include <bits/stdc++.h>
+#include <map>
 
 using namespace std;
 
 int main() {
-    long long num;
-    long long tool;
-    long long radif;
-    long long sotoon;
-    long long num2;
-    char direction;
-    char direction_of_upper_bound;
+    long long numRows, numQueries;
+    cin >> numRows >> numQueries;
 
-    map<long long, pair<long long,char>> window;
-    map<long long, pair<long long,char>> :: iterator itr;
+    map<long long, pair<long long, char>> windows;
 
-    cin >> tool;
-    cin >> num;
+    for (long long i = 0; i < numQueries; i++) {
+        long long column, row;
+        char direction;
+        cin >> column >> row >> direction;
 
-    for (long long i = 0; i < num; i++) {
-        cin >> sotoon;
-        cin >> radif;
-        cin >> direction;
-        itr = window.lower_bound(sotoon);
-        if (itr -> first == 0) {
-            if (direction == 'U') num2 = tool - sotoon + 1;
-            else num2 = sotoon;
-        } else if (itr -> first == sotoon) {
-            num2 = 0;
-            cout << num2 << endl;
-            continue;
-        } else if (direction == 'U') {
-            if (itr -> first <= sotoon) {
-                num2 = tool - sotoon + 1;
-            } else {
-                direction_of_upper_bound = (itr -> second).second;
-                num2 = itr -> first - sotoon;
-                if (direction_of_upper_bound == 'U') num2 += (itr -> second).first;
-            }
+        auto it = windows.lower_bound(column);
+        long long distance;
+
+        if (it == windows.end()) {
+            distance = (direction == 'U') ? numRows - column + 1 : column;
+        } else if (it->first == column) {
+            distance = 0;
         } else {
-            if (itr != window.begin()) itr--;
-            if (itr -> first >= sotoon) {
-                num2 = sotoon;
+            if (direction == 'U') {
+                if (it->first <= column) {
+                    distance = numRows - column + 1;
+                } else {
+                    char upperBoundDirection = it->second.second;
+                    distance = it->first - column;
+                    if (upperBoundDirection == 'U') distance += it->second.first;
+                }
             } else {
-                direction_of_upper_bound = (itr -> second).second;
-                num2 = sotoon - itr -> first;
-                if (direction_of_upper_bound == 'L') num2 += (itr -> second).first;
+                if (it != windows.begin()) it--;
+                if (it->first >= column) {
+                    distance = column;
+                } else {
+                    char lowerBoundDirection = it->second.second;
+                    distance = column - it->first;
+                    if (lowerBoundDirection == 'L') distance += it->second.first;
+                }
             }
         }
-        window.insert({sotoon, {num2, direction}});
-        cout << num2 << endl;
+
+        windows[column] = {distance, direction};
+        cout << distance << endl;
     }
+
+    return 0;
 }
