@@ -3,7 +3,6 @@
 #include <vector>
 #include <map>
 using namespace std;
-//static
 
 long long int solve(string Reshteh)
 {
@@ -11,9 +10,7 @@ long long int solve(string Reshteh)
     long long int size = Reshteh.size() / 2;
     long long int firstHash = 0;
     long long int secondHash = 0;
-    //long long int m = 1000000000;
     long long int m = 1e9 + 7;
-    //m = m + 9;
     for (long long int i = 0; i < size; ++i)
     {
         int fir = i;
@@ -24,8 +21,6 @@ long long int solve(string Reshteh)
         firstHash %= m;
         secondHash = (secondHash + tavan * (second - 'a' + 1));
         secondHash %= m;
-        //firstHash = ((firstHash * p) + (first - 'a' + 1)) % m;
-        //secondHash = (secondHash + tavan * (second - 'a' + 1)) % m;
         tavan = (tavan * p);
         tavan = tavan % m;
         if (firstHash == secondHash)
@@ -47,8 +42,6 @@ int main()
     for (int i = 1; i < n+1; i++)
     {
         string toSolve;
-        //scanf("%d", &toSolve);
-        //printf("%d", solve(toSolve));4
         cin >> toSolve;
         cout << solve(toSolve) << endl;
     }
