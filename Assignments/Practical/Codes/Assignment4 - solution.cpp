@@ -1,49 +1,36 @@
 #include <iostream>
-#include <iterator>
-#include <vector>
-#include <map>
+#include <string>
 using namespace std;
 
-long long int solve(string Reshteh)
-{
-    long long int marhaleh = 1, tavan = 1, p = 31;
-    long long int size = Reshteh.size() / 2;
-    long long int firstHash = 0;
-    long long int secondHash = 0;
-    long long int m = 1e9 + 7;
-    for (long long int i = 0; i < size; ++i)
-    {
-        int fir = i;
-        char first = Reshteh[fir];
-        int sec = Reshteh.size() - 1 - i;
-        char second = Reshteh[sec];
-        firstHash = ((firstHash * p) + (first - 'a' + 1));
-        firstHash %= m;
-        secondHash = (secondHash + tavan * (second - 'a' + 1));
-        secondHash %= m;
-        tavan = (tavan * p);
-        tavan = tavan % m;
-        if (firstHash == secondHash)
-        {
-            firstHash = 0 , secondHash = 0, tavan = 1;
-            marhaleh = marhaleh + 2;
-            int partSecond = Reshteh.size() - i - 2;
-            if (i == Reshteh.size() - i - 2)
-                marhaleh--;
+long long computeMaxSymmetricParts(string str) {
+    long long phase = 1, power = 1, prime = 31;
+    long long halfSize = str.size() / 2;
+    long long firstHash = 0, secondHash = 0, modulo = 1e9 + 7;
+
+    for (long long i = 0; i < halfSize; ++i) {
+        char firstChar = str[i];
+        char secondChar = str[str.size() - 1 - i];
+        firstHash = ((firstHash * prime) + (firstChar - 'a' + 1)) % modulo;
+        secondHash = (secondHash + power * (secondChar - 'a' + 1)) % modulo;
+        power = (power * prime) % modulo;
+
+        if (firstHash == secondHash) {
+            firstHash = 0, secondHash = 0, power = 1;
+            phase += 2;
+            if (i == str.size() - i - 2)
+                phase--;
         }
     }
-    return marhaleh;
+    return phase;
 }
 
-int main()
-{
-    int n;
-    scanf("%d", &n);
-    for (int i = 1; i < n+1; i++)
-    {
-        string toSolve;
-        cin >> toSolve;
-        cout << solve(toSolve) << endl;
+int main() {
+    int testCases;
+    cin >> testCases;
+    for (int i = 0; i < testCases; ++i) {
+        string str;
+        cin >> str;
+        cout << computeMaxSymmetricParts(str) << endl;
     }
     return 0;
 }
