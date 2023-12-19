@@ -34,7 +34,7 @@ In the "Quizzes" folder, you will find the solutions to 2 quizzes given during t
 
 ## Notes
 
-In the "Notes" folder, you will find the notes which were given during the course.
+In the "Notes" folder, you will find the notes which were made by students during the course.
 
 ## Source
 
