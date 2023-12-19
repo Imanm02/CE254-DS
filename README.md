@@ -14,6 +14,11 @@ This repository contains solutions to the practical assignments for the CE181: D
 - [Quizzes](#quizzes)
 - [Notes](#notes)
 - [Source](#source)
+- [Maintainer](#maintainer)
+
+## Assignments
+
+In the "Assignments" folder, you will find the docs of 15 theoretical assignments and solutions to 6 practical assignments given during the course.
 
 ## Assignments
 
