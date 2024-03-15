@@ -10,8 +10,8 @@ This repository contains solutions to the practical assignments for the CE181: D
 - [Overview](#overview)
 - [Assignments](#assignments)
 - [Challenge](#challenge)
-- [Exams](#exams)
-- [Quizzes](#quizzes)
+- [Exam](#exam)
+- [Quiz](#quiz)
 - [Notes](#notes)
 - [Source](#source)
 - [Maintainer](#maintainer)
@@ -24,13 +24,13 @@ In the "Assignments" folder, you will find the docs of 15 theoretical assignment
 
 In the "Challenge" folder, you will find the doc of the challenge given during the course.
 
-## Exams
+## Exam
 
-In the "Exams" folder, you will find the solutions to the midterm and final of the course.
+In the "Exam" folder, you will find the solutions to the midterm and final of the course.
 
-## Quizzes
+## Quiz
 
-In the "Quizzes" folder, you will find the solutions to 2 quizzes given during the course.
+In the "Quiz" folder, you will find the solutions to 2 quizzes given during the course.
 
 ## Notes
 
